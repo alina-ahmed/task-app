@@ -28,7 +28,8 @@ export class DialogService {
 
   }
 
-  openEditDialog(task: Task): Observable<any>{
+  openEditDialog(task: Task){
+   
     const dialogRef=this.dialog.open(DialogComponent,{
       data:{ 
         taskName:task.title, taskDescription: task.description, taskIcon: task.icon, taskStatus:task.status, taskStatusIcon: task.statusIcon}

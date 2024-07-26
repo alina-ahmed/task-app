@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../task.service';
-import { CompletedComponent } from '../completed/completed.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogService } from '../dialog.service';
@@ -10,7 +9,7 @@ import { DialogService } from '../dialog.service';
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [FormsModule,CompletedComponent],
+  imports: [FormsModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
 })
@@ -33,24 +32,6 @@ export class TaskComponent implements OnInit {
         string,string]
 };
 
-  // tasks: Task [] =[
-  //   { 
-  //     description: "Grocery shopping",
-  //     status: "pending"
-  //   },
-  //   { 
-  //     description: "Clean attic",
-  //     status: "pending"
-  //   },
-  //   { 
-  //     description: "Complete side-project",
-  //     status: "pending"
-  //   },
-  //   { 
-  //     description: "Take dog for walk",
-  //     status: "pending"
-  //   },
-  // ]
 
   ngOnInit(): void {
     this.getTasks();
@@ -59,26 +40,17 @@ export class TaskComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   openDialog() {
-  //  const dialogRef= this.dialog.open(DialogComponent);
 
-  //  dialogRef.afterClosed().subscribe(
-
-  //  )
   this.dialogModalService.openDialog().subscribe(data=>{
-    console.log("data:")
-    console.log(data.value);
+  
     this.addTasks(data);
 
   });
 
-  console.log(this.tasks);
 
   }
 
   openEditDialog(task: Task){
-    console.log(task);
-    let currentTask=  this.taskService.getCurrentTask(task);
-    console.log(currentTask);
     this.dialogModalService.openEditDialog(task);
 
   }
@@ -104,9 +76,7 @@ export class TaskComponent implements OnInit {
   }
 
   addTasks(data: any):void{
-    console.log("In addTasks");
-
-    console.log(data);
+  
     let newTask : Task;
 
      newTask = {
@@ -117,27 +87,12 @@ export class TaskComponent implements OnInit {
       "statusIcon": data.value.taskStatusIcon
     };
 
-    console.log(newTask);
+
       this.taskService.addTask(newTask);
 
-    
-    // if(newTask===undefined){
-    //   return
-    // }
-    // else{
-    //   this.taskService.addTask(newTask);
-
-    // }
+  
   }
 
-
-  // addTask(){
-  //   let newTask:Task = {
-  //     "description": this.newTaskDesc,
-  //     "status": "pending"
-  //   }
-  //   this.tasks.push(newTask);
-  // }
 
   deleteTask(task:Task){
     const index: number = this.tasks.indexOf(task);

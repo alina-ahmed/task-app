@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TaskComponent } from './task/task.component';
 import { CommonModule } from '@angular/common';
-import { CompletedComponent } from './completed/completed.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,TaskComponent,CommonModule,CompletedComponent,MatSlideToggleModule],
+  imports: [RouterOutlet,TaskComponent,CommonModule,MatSlideToggleModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

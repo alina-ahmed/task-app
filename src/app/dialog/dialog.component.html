@@ -1,13 +1,13 @@
 <div class="container">
   <h2 mat-dialog-title>Task details</h2>
-  <form [formGroup]="taskForm" (ngSubmit)="saveTask()" class="example-form">
+  <form [formGroup]="taskForm" class="example-form">
 
   <mat-dialog-content>
       <label>Task Name
-        <input type="text" id="name" formControlName="taskName" placeholder={{newTask.taskName}} />
+        <input type="text" id="name" formControlName="taskName" [(ngModel)]="newTask.taskName"/>
       </label>
       <label>Task Description
-        <input type="text" id="description" placeholder="" formControlName="taskDescription" />
+        <input type="text" id="description" placeholder="" formControlName="taskDescription" [(ngModel)]="newTask.taskDescription" />
       </label>
       <h3>Icon</h3>
 

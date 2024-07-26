@@ -19,16 +19,6 @@ export class TaskService {
   }
 
   addTask(newTask: Task){
-    // let newTask:Task = {
-    //   "title": newTaskDesc,
-    //   "description": "",
-    //   "status": "pending",
-    //   "icon":"",
-    //   "statusIcon":["",""]
-
-
-      
-    // }
     TASKS.push(newTask);
   }
 }
